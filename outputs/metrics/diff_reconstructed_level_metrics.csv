@@ -1,0 +1,2 @@
+﻿model,target_scale,n_observations,mae,rmse,r_squared,mean_error
+First-Difference OLS (Reconstructed Level),KOSPI level,24,180.78868304384935,253.4089468712463,-3.118889665881815,-77.38220050564473

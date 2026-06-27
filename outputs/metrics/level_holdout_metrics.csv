@@ -1,0 +1,2 @@
+﻿model,target_scale,n_observations,mae,rmse,r_squared,mean_error
+Level OLS,KOSPI level,24,239.03240044111104,289.2909428296151,-4.367918880800528,-237.44676477528768

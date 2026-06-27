@@ -1,0 +1,2 @@
+﻿test,n_observations,target,features,test_statistic,p_value,critical_value_1pct,critical_value_5pct,critical_value_10pct,significance_level,reject_no_cointegration,decision
+Engle-Granger,156,KOSPI,"Exchange_Rate, Interest_Rate, SP500, WTI_Oil",-2.9952774528273975,0.5901112267549391,-5.100653798126951,-4.506297284079084,-4.2010287929240375,0.05,False,No cointegration detected

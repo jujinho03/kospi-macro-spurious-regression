@@ -1,0 +1,48 @@
+# Python
+
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.venv/
+venv/
+env/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# IDE
+
+.vscode/
+.idea/
+
+# OS
+
+.DS_Store
+Thumbs.db
+
+# Temporary and log files
+
+*.log
+*.tmp
+*.temp
+
+# Local secrets and environment variables
+
+.env
+.env.*
+!.env.example
+
+# Internal working documents
+
+마스터프롬프트_*.md
+
+# Raw downloads that can be regenerated
+
+data/raw/*.xlsx
+data/raw/*.xls
+
+# Keep repository placeholder files
+
+!.gitkeep

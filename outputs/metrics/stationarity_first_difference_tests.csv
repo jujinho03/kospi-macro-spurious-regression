@@ -1,0 +1,16 @@
+﻿variable,transformation,n_observations,significance_level,adf_statistic,adf_pvalue,adf_used_lag,adf_nobs,adf_critical_1pct,adf_critical_5pct,adf_critical_10pct,adf_reject_unit_root,kpss_statistic,kpss_pvalue,kpss_used_lag,kpss_critical_1pct,kpss_critical_5pct,kpss_critical_10pct,kpss_reject_stationarity,combined_decision,kpss_warning
+KOSPI,First Difference,179,0.05,-6.730731654027956,3.301153563922504e-09,2,176,-3.4680615871598537,-2.8781061899535128,-2.5756015922004134,True,0.05969931366895827,0.1,4,0.739,0.463,0.347,False,Stationary,"The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is greater than the p-value returned.
+"
+SP500,First Difference,179,0.05,-15.511008962821668,2.3486254921977547e-28,0,178,-3.467631519151906,-2.8779183721695567,-2.575501353364474,True,0.2771210812596215,0.1,1,0.739,0.463,0.347,False,Stationary,"The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is greater than the p-value returned.
+"
+Exchange_Rate,First Difference,179,0.05,-9.222561039816581,1.763861991549212e-15,2,176,-3.4680615871598537,-2.8781061899535128,-2.5756015922004134,True,0.27729218128313093,0.1,11,0.739,0.463,0.347,False,Stationary,"The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is greater than the p-value returned.
+"
+WTI_Oil,First Difference,179,0.05,-11.683776563728104,1.7164172833979477e-21,0,178,-3.467631519151906,-2.8779183721695567,-2.575501353364474,True,0.05551845986074558,0.1,3,0.739,0.463,0.347,False,Stationary,"The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is greater than the p-value returned.
+"
+Interest_Rate,First Difference,179,0.05,-10.058338124584091,1.3542415500610882e-17,0,178,-3.467631519151906,-2.8779183721695567,-2.575501353364474,True,0.31939049715298634,0.1,4,0.739,0.463,0.347,False,Stationary,"The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is greater than the p-value returned.
+"

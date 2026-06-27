@@ -1,0 +1,6 @@
+﻿variable,level_adf_pvalue,level_kpss_pvalue,level_decision,diff_adf_pvalue,diff_kpss_pvalue,diff_decision,recommended_transformation,rationale
+KOSPI,0.1823653774044694,0.01,Non-stationary,3.301153563922504e-09,0.1,Stationary,First Difference,수준 정상성이 확보되지 않았고 1차 차분 후 정상성이 확인되었다.
+SP500,0.9980912004383806,0.01,Non-stationary,2.3486254921977547e-28,0.1,Stationary,First Difference,수준 정상성이 확보되지 않았고 1차 차분 후 정상성이 확인되었다.
+Exchange_Rate,0.6502557655167815,0.01,Non-stationary,1.763861991549212e-15,0.1,Stationary,First Difference,수준 정상성이 확보되지 않았고 1차 차분 후 정상성이 확인되었다.
+WTI_Oil,0.16227805379105653,0.056735811807949406,Inconclusive,1.7164172833979477e-21,0.1,Stationary,First Difference,수준 정상성이 확보되지 않았고 1차 차분 후 정상성이 확인되었다.
+Interest_Rate,0.05415197243853936,0.048925141733952626,Non-stationary,1.3542415500610882e-17,0.1,Stationary,First Difference,수준 정상성이 확보되지 않았고 1차 차분 후 정상성이 확인되었다.

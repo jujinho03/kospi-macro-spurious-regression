@@ -1,0 +1,30 @@
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                  KOSPI   R-squared:                       0.810
+Model:                            OLS   Adj. R-squared:                  0.805
+Method:                 Least Squares   F-statistic:                     23.59
+Date:                Sat, 27 Jun 2026   Prob (F-statistic):           3.62e-15
+Time:                        09:49:29   Log-Likelihood:                -1005.9
+No. Observations:                 156   AIC:                             2022.
+Df Residuals:                     151   BIC:                             2037.
+Df Model:                           4
+Covariance Type:                  HAC
+=================================================================================
+                    coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------
+const          3299.2638    519.759      6.348      0.000    2272.324    4326.204
+Exchange_Rate    -1.9398      0.542     -3.581      0.000      -3.010      -0.870
+Interest_Rate    54.5751     49.568      1.101      0.273     -43.360     152.511
+SP500             0.3837      0.044      8.660      0.000       0.296       0.471
+WTI_Oil           0.4922      1.630      0.302      0.763      -2.728       3.712
+==============================================================================
+Omnibus:                        3.213   Durbin-Watson:                   0.261
+Prob(Omnibus):                  0.201   Jarque-Bera (JB):                3.265
+Skew:                           0.333   Prob(JB):                        0.195
+Kurtosis:                       2.759   Cond. No.                     6.15e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 12 lags and with small sample correction
+[2] The condition number is large, 6.15e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

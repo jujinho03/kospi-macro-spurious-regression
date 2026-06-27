@@ -1,0 +1,2 @@
+﻿model,target_scale,n_observations,mae,rmse,r_squared,mean_error,directional_accuracy
+First-Difference OLS,Monthly change in KOSPI,24,75.1762367447471,98.04674613441307,0.23072432480042016,-26.110992246356243,0.6666666666666666

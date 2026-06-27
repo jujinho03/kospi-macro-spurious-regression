@@ -1,0 +1,6 @@
+﻿variable,legacy_non_null,regenerated_non_null,legacy_missing,regenerated_missing,changed_month_count,mean_absolute_difference,max_absolute_difference
+KOSPI,180,180,0,0,0,0.0,0.0
+SP500,180,180,0,0,0,0.0,0.0
+Exchange_Rate,180,180,0,0,42,2.1652227289146855,43.0999755859375
+WTI_Oil,180,180,0,0,26,0.7588889227973094,24.279998779296875
+Interest_Rate,180,180,0,0,0,0.0,0.0

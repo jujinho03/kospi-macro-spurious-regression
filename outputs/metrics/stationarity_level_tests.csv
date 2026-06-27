@@ -1,0 +1,12 @@
+﻿variable,transformation,n_observations,significance_level,adf_statistic,adf_pvalue,adf_used_lag,adf_nobs,adf_critical_1pct,adf_critical_5pct,adf_critical_10pct,adf_reject_unit_root,kpss_statistic,kpss_pvalue,kpss_used_lag,kpss_critical_1pct,kpss_critical_5pct,kpss_critical_10pct,kpss_reject_stationarity,combined_decision,kpss_warning
+KOSPI,Level,180,0.05,-2.2683904717761734,0.1823653774044694,3,176,-3.4680615871598537,-2.8781061899535128,-2.5756015922004134,False,1.2741429130337967,0.01,9,0.739,0.463,0.347,True,Non-stationary,"The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is smaller than the p-value returned.
+"
+SP500,Level,180,0.05,1.6849034903455837,0.9980912004383806,2,177,-3.467845319799907,-2.878011745497439,-2.575551186759871,False,1.8101492514509474,0.01,9,0.739,0.463,0.347,True,Non-stationary,"The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is smaller than the p-value returned.
+"
+Exchange_Rate,Level,180,0.05,-1.253304648558326,0.6502557655167815,0,179,-3.4674201432469816,-2.877826051844538,-2.575452082332012,False,1.2532046252787867,0.01,8,0.739,0.463,0.347,True,Non-stationary,"The test statistic is outside of the range of p-values available in the
+look-up table. The actual p-value is smaller than the p-value returned.
+"
+WTI_Oil,Level,180,0.05,-2.330634240337967,0.16227805379105653,1,178,-3.467631519151906,-2.8779183721695567,-2.575501353364474,False,0.4473729166055574,0.056735811807949406,9,0.739,0.463,0.347,False,Inconclusive,
+Interest_Rate,Level,180,0.05,-2.8297222880109674,0.05415197243853936,12,167,-3.470126426071447,-2.8790075987120027,-2.5760826967621644,False,0.4677723707012504,0.048925141733952626,9,0.739,0.463,0.347,True,Non-stationary,

@@ -1,0 +1,26 @@
+project:
+  name: KOSPI 거시경제 결정요인 분석
+  description: 월별 금융 시계열의 정상성 진단, 허위회귀 검토, 차분 OLS 및 HAC 추론을 통한 KOSPI 결정요인 분석
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  interest_rate_file: interest_rate.csv
+  final_dataset_file: kospi_macro_monthly.csv
+period:
+  start: '2010-01-01'
+  end: '2024-12-31'
+yfinance_tickers:
+  KOSPI: ^KS11
+  SP500: ^GSPC
+  Exchange_Rate: KRW=X
+  WTI_Oil: CL=F
+model:
+  target: KOSPI
+  features:
+  - Exchange_Rate
+  - Interest_Rate
+  - SP500
+  - WTI_Oil
+  holdout_months: 24
+diagnostics:
+  residual_z_threshold: 2.0

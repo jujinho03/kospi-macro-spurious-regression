@@ -1,0 +1,28 @@
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                  KOSPI   R-squared:                       0.562
+Model:                            OLS   Adj. R-squared:                  0.550
+Method:                 Least Squares   F-statistic:                     48.12
+Date:                Sat, 27 Jun 2026   Prob (F-statistic):           5.57e-26
+Time:                        09:49:29   Log-Likelihood:                -872.94
+No. Observations:                 155   AIC:                             1756.
+Df Residuals:                     150   BIC:                             1771.
+Df Model:                           4
+Covariance Type:            nonrobust
+=================================================================================
+                    coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------
+const            -4.2771      5.598     -0.764      0.446     -15.339       6.785
+Exchange_Rate    -0.5619      0.200     -2.815      0.006      -0.956      -0.168
+Interest_Rate   -78.5789     39.557     -1.986      0.049    -156.740      -0.417
+SP500             0.4643      0.052      8.922      0.000       0.361       0.567
+WTI_Oil           2.4768      0.943      2.626      0.010       0.613       4.340
+==============================================================================
+Omnibus:                       11.992   Durbin-Watson:                   2.010
+Prob(Omnibus):                  0.002   Jarque-Bera (JB):               24.196
+Skew:                          -0.287   Prob(JB):                     5.57e-06
+Kurtosis:                       4.849   Cond. No.                         889.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

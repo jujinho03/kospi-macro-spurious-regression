@@ -1,5 +1,8 @@
 project:
-  name: KOSPI 거시경제 결정요인 분석
+  name: "KOSPI Macro Spurious Regression"
+  title: "KOSPI 거시경제 변수 분석: 정상성 진단과 허위회귀 검증"
+  author: "주진호"
+  portfolio_id: "01"
   description: 월별 금융 시계열의 정상성 진단, 허위회귀 검토, 차분 OLS 및 HAC 추론을 통한 KOSPI 결정요인 분석
 data:
   raw_dir: data/raw

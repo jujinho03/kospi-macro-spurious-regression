@@ -1,10 +1,22 @@
 # KOSPI 거시경제 변수 분석: 정상성 진단과 허위회귀 검증
 
-> 높은 수준 회귀 설명력을 그대로 신뢰하지 않고 정상성·공적분·잔차·강건 추론을 통해 금융 시계열 모형을 재검증한 프로젝트
+![Python](https://img.shields.io/badge/Python-Data%20Analysis-3776AB?style=flat-square&logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-Data%20Processing-150458?style=flat-square&logo=pandas&logoColor=white)
+![statsmodels](https://img.shields.io/badge/statsmodels-Econometrics-4051B5?style=flat-square)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)
 
-2010년 1월부터 2024년 12월까지의 월별 KOSPI, 원/달러 환율, 국고채 3년 금리, S&P 500, WTI 시계열을 분석했습니다. 수준 OLS의 높은 R²를 성과로 제시하기보다 비정상성과 잔차 자기상관, 이분산성, 공적분 부재를 확인하고 1차 차분 OLS와 HAC 강건 표준오차로 해석을 교정했습니다.
+**바로가기:** [분석 노트북](notebooks/) · [분석 보고서](docs/findings.md) · [프로젝트 설명](docs/portfolio_description.md) · [주요 산출물](outputs/)
 
-모든 계수는 동일 월에 관측된 금융 변수와 KOSPI 변화 사이의 조건부 통계적 연관성으로 해석하며, 인과효과로 해석하지 않습니다.
+> **문제** — 높은 R²를 그대로 신뢰할 때 발생하는 금융 시계열의 허위회귀 위험을 진단했습니다.<br>
+> **한 일** — 2010~2024년 5개 월별 시계열에 정상성·공적분·잔차·HAC·24개월 홀드아웃 검증을 적용했습니다.<br>
+> **핵심 결과** — 수준 OLS R² 0.8103에도 공적분 p-value 0.5901을 확인해 1차 차분 모형으로 해석을 교정했습니다.<br>
+> **차별점** — 높은 적합도보다 진단 결과를 우선하고 모든 계수를 인과가 아닌 동시점 연관성으로 제한했습니다.
+
+## 이 프로젝트로 보여주는 역량
+
+- 외부 금융 데이터의 수집·월별 집계와 재구축 전후 품질 감사
+- 정상성·허위회귀·잔차 구조를 확인한 뒤 수행한 강건 통계추론
+- 시간 순서 기반 홀드아웃과 분석 한계를 포함한 결과 문서화
 
 ## 1. 핵심 결과
 
@@ -118,7 +130,7 @@ Engle–Granger 공적분 검정 p-value는 0.590111로, 수준 변수 사이에
 
 표준화 잔차 `|z| ≥ 2`를 기준으로 수준 OLS와 차분 OLS에서 각각 8개 이상 시점을 식별했습니다. 수준 모형의 이상 잔차가 2021년에 연속적으로 집중된 현상은 개별 충격보다 모형의 지속적 과소예측과 자기상관을 의심할 근거로 해석했습니다.
 
-## 8. 저장소 구조
+## 8. 프로젝트 구조
 
 ```text
 .
@@ -173,7 +185,7 @@ JupyterLab에서 `01_data_collection_cleaning.ipynb` → `02_stationarity_diagno
 
 재현 기준 환경은 Python 3.13.3, `requirements.txt`의 고정 패키지 버전과 프로젝트 상대경로입니다.
 
-## 10. 한계
+## 10. 한계와 개선 방향
 
 - 월별 동시점 선형관계만 분석했으며 시차효과는 모형화하지 않았습니다.
 - 정책·수급·투자심리·변동성 등 중요한 설명변수가 누락될 수 있습니다.
@@ -184,3 +196,7 @@ JupyterLab에서 `01_data_collection_cleaning.ipynb` → `02_stationarity_diagno
 - 모든 결과는 통계적 연관성이며 인과관계를 의미하지 않습니다.
 
 자세한 검증 결과와 교정 전후 해석은 [`docs/findings.md`](docs/findings.md)에서 확인할 수 있습니다.
+
+## 11. 결론
+
+수준 OLS의 높은 R²를 성과로 받아들이지 않고 정상성·공적분·잔차 구조를 먼저 확인해 허위회귀 위험을 진단했습니다. 1차 차분과 HAC 강건 표준오차로 단기 연관성의 해석을 교정했으며, 24개월 홀드아웃 결과는 표본 제약이 있는 보조 지표로 제한했습니다. 이 프로젝트는 높은 적합도보다 검증 절차와 해석의 신뢰성을 우선한 과정입니다.

@@ -5,7 +5,7 @@
 ![statsmodels](https://img.shields.io/badge/statsmodels-Econometrics-4051B5?style=flat-square)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)
 
-**바로가기:** [분석 노트북](notebooks/) · [분석 보고서](docs/findings.md) · [프로젝트 설명](docs/portfolio_description.md) · [주요 산출물](outputs/)
+**바로가기:** [분석 노트북](notebooks/) · [분석 보고서](docs/findings.md) · [프로젝트 설명](docs/portfolio_description.md) · [최종 산출물](#8-최종-산출물) · [일관성 감사](docs/consistency_audit.md)
 
 > **문제** — 높은 R²를 그대로 신뢰할 때 발생하는 금융 시계열의 허위회귀 위험을 진단했습니다.<br>
 > **한 일** — 2010~2024년 5개 월별 시계열에 정상성·공적분·잔차·HAC·24개월 홀드아웃 검증을 적용했습니다.<br>
@@ -17,6 +17,29 @@
 - 외부 금융 데이터의 수집·월별 집계와 재구축 전후 품질 감사
 - 정상성·허위회귀·잔차 구조를 확인한 뒤 수행한 강건 통계추론
 - 시간 순서 기반 홀드아웃과 분석 한계를 포함한 결과 문서화
+
+## 프로젝트 한눈에 보기
+
+| 3분 요약 | 내용 |
+|---|---|
+| 문제 | 수준값의 높은 R²를 그대로 신뢰할 때 생기는 금융 시계열 허위회귀 위험을 검증했습니다. |
+| 데이터 | 2010-01~2024-12 월별 180개 시점의 KOSPI·환율·금리·S&P 500·WTI를 사용했습니다. |
+| 접근 | 데이터 재수집 감사 → ADF·KPSS → 공적분 → 수준/차분 OLS → 잔차·VIF → HAC → 24개월 홀드아웃 순으로 검증했습니다. |
+| 핵심 결과 | 수준 OLS의 R²는 0.8103이지만 DW는 0.2611이었고 공적분 p-value는 0.5901이었습니다. 1차 차분 후 DW는 2.0102로 개선됐습니다. |
+| 판단 교정 | 수준 모형은 허위회귀 위험을 보여주는 비교·진단용으로 제한하고, 차분 모형을 단기 동시점 연관성 해석의 주 모형으로 채택했습니다. |
+| 최종 산출물 | 실행 노트북, 데이터 품질·재수집 감사, 진단·HAC 결과, 홀드아웃 평가, 대표 시각화, 분석 보고서를 함께 공개했습니다. |
+
+## 나의 역할과 재구축 범위
+
+| 구분 | 내용 |
+|---|---|
+| 프로젝트 출발점 | 학부 `회귀분석 Team 과제` |
+| 지원서 기재 프로젝트 기간 | 2025.10.17–2025.12.07 |
+| 지원서에 정리한 본인 수행 | 데이터 수집·일관성 검증, 시계열 진단·교정, 보고서 작성 |
+| 개인 재구축 범위 | 외부 데이터 재수집과 68개 변경값 감사, ADF·KPSS, 공적분, HAC, 24개월 홀드아웃, 재현 문서를 전면 정리했습니다. |
+| 공개 Git 정리 기록 | 2026.06.27–현재 |
+
+기간과 역할은 과제 출발점, 지원서 기록, 이후의 개인 재구축을 구분해 적었습니다. 현재 저장소의 수치와 해석은 공개 산출물을 기준으로 하며, 과거 과제 보고서의 수치를 옮겨 쓰지 않았습니다.
 
 ## 1. 핵심 결과
 
@@ -32,9 +55,34 @@
 | 차분 모형 홀드아웃 RMSE / 방향 정확도 | 98.0467 / 66.67% |
 | 차분 수준 복원의 수준 OLS 대비 RMSE 개선 | 12.4% |
 
+### 수준값과 1차 차분 모형의 판단 비교
+
+| 구분 | 수준 OLS | 1차 차분 OLS |
+|---|---:|---:|
+| 학습 표본 | 156 | 155 |
+| R² | 0.8103 | 0.5620 |
+| Durbin–Watson | 0.2611 | 2.0102 |
+| 포트폴리오 내 역할 | 허위회귀 위험 비교·진단 | 단기 연관성 해석의 주 모형 |
+| 최종 판단 | 높은 설명력만으로 채택하지 않음 | 정상성 확보 후 HAC 추론과 홀드아웃으로 제한적 해석 |
+
+Engle–Granger 공적분 p-value는 **0.5901**로, 수준 변수 사이의 안정적인 장기 균형관계를 지지하지 않았습니다. 따라서 R²가 0.8103에서 0.5620으로 낮아져도, 잔차 자기상관이 크게 완화된 차분 모형을 중심으로 해석을 전환했습니다.
+
 수준 OLS는 R² 0.8103을 보였지만 비정상 변수, 강한 잔차 자기상관, 이분산성과 공적분 근거 부재가 함께 확인됐습니다. 따라서 주 모형으로 채택하지 않고 허위회귀 위험을 보여주는 비교·진단 모형으로 사용했습니다.
 
 ![월별 금융 변수 표준화 시계열](outputs/figures/monthly_series_standardized.png)
+
+## 핵심 주장과 검증 경로
+
+| 핵심 주장 | 공개 근거 |
+|---|---|
+| 2010-01~2024-12의 180개 월별 시점, 5개 변수, 결측 0개 | [`outputs/reports/data_quality_summary.csv`](outputs/reports/data_quality_summary.csv) |
+| 재수집 전후 변경값은 환율 42개와 WTI 26개, 합계 68개 | [`outputs/metrics/data_regeneration_comparison_summary.csv`](outputs/metrics/data_regeneration_comparison_summary.csv) · [`outputs/metrics/data_regeneration_changed_values.csv`](outputs/metrics/data_regeneration_changed_values.csv) |
+| 1차 차분 후 5개 변수 모두 정상성 판정 | [`outputs/metrics/stationarity_decision_summary.csv`](outputs/metrics/stationarity_decision_summary.csv) |
+| 수준/차분 OLS의 표본·R²·DW·잔차 진단 비교 | [`outputs/metrics/model_diagnostics_comparison.csv`](outputs/metrics/model_diagnostics_comparison.csv) |
+| Engle–Granger 공적분 p-value 0.5901 | [`outputs/metrics/level_engle_granger_cointegration_test.csv`](outputs/metrics/level_engle_granger_cointegration_test.csv) |
+| HAC 5% 유의 변수는 환율·S&P 500·WTI | [`outputs/metrics/diff_ols_hac_inference.csv`](outputs/metrics/diff_ols_hac_inference.csv) |
+| 차분 모형 홀드아웃 24개월, MAE 75.1762, RMSE 98.0467, 방향 정확도 66.67% | [`outputs/metrics/diff_holdout_metrics.csv`](outputs/metrics/diff_holdout_metrics.csv) |
+| 동일한 KOSPI 수준 척도에서 RMSE 289.2909 → 253.4089 | [`outputs/metrics/holdout_same_scale_model_comparison.csv`](outputs/metrics/holdout_same_scale_model_comparison.csv) |
 
 ## 2. 분석 질문
 
@@ -130,7 +178,18 @@ Engle–Granger 공적분 검정 p-value는 0.590111로, 수준 변수 사이에
 
 표준화 잔차 `|z| ≥ 2`를 기준으로 수준 OLS와 차분 OLS에서 각각 8개 이상 시점을 식별했습니다. 수준 모형의 이상 잔차가 2021년에 연속적으로 집중된 현상은 개별 충격보다 모형의 지속적 과소예측과 자기상관을 의심할 근거로 해석했습니다.
 
-## 8. 프로젝트 구조
+## 8. 최종 산출물
+
+| 구분 | 파일 | 설명 |
+|---|---|---|
+| 분석 노트북 | [`01_data_collection_cleaning.ipynb`](notebooks/01_data_collection_cleaning.ipynb) · [`02_stationarity_diagnostics.ipynb`](notebooks/02_stationarity_diagnostics.ipynb) · [`03_modeling_evaluation.ipynb`](notebooks/03_modeling_evaluation.ipynb) | 데이터 수집·정제부터 진단과 모델 평가까지의 실행 경로 |
+| 데이터 품질·재수집 감사 | [`data_quality_summary.csv`](outputs/reports/data_quality_summary.csv) · [`data_regeneration_comparison_summary.csv`](outputs/metrics/data_regeneration_comparison_summary.csv) · [`data_regeneration_changed_values.csv`](outputs/metrics/data_regeneration_changed_values.csv) | 월별 데이터 완전성과 재수집 전후 68개 변경값 기록 |
+| 진단·강건 추론 | [`stationarity_decision_summary.csv`](outputs/metrics/stationarity_decision_summary.csv) · [`model_diagnostics_comparison.csv`](outputs/metrics/model_diagnostics_comparison.csv) · [`level_engle_granger_cointegration_test.csv`](outputs/metrics/level_engle_granger_cointegration_test.csv) · [`diff_ols_hac_inference.csv`](outputs/metrics/diff_ols_hac_inference.csv) | 정상성, 수준·차분 진단, 공적분과 HAC 추론 결과 |
+| 홀드아웃 평가 | [`diff_holdout_metrics.csv`](outputs/metrics/diff_holdout_metrics.csv) · [`holdout_same_scale_model_comparison.csv`](outputs/metrics/holdout_same_scale_model_comparison.csv) | 24개월 변화량 평가와 동일 수준 척도 비교 |
+| 대표 시각화 | [`monthly_series_standardized.png`](outputs/figures/monthly_series_standardized.png) · [`diff_ols_residual_diagnostics.png`](outputs/figures/diff_ols_residual_diagnostics.png) · [`holdout_kospi_first_difference_prediction.png`](outputs/figures/holdout_kospi_first_difference_prediction.png) · [`holdout_kospi_level_model_comparison.png`](outputs/figures/holdout_kospi_level_model_comparison.png) | 시계열·잔차 진단과 홀드아웃 예측 비교 |
+| 해석·수치 감사 | [`findings.md`](docs/findings.md) · [`consistency_audit.md`](docs/consistency_audit.md) | 결과 해석·한계와 README·CSV 간 교차검증 |
+
+## 9. 프로젝트 구조
 
 ```text
 .
@@ -148,6 +207,7 @@ Engle–Granger 공적분 검정 p-value는 0.590111로, 수준 변수 사이에
 │  ├─ 02_stationarity_diagnostics.ipynb
 │  └─ 03_modeling_evaluation.ipynb
 ├─ docs/
+│  ├─ consistency_audit.md
 │  ├─ findings.md
 │  ├─ portfolio_description.md
 │  └─ submission_manifest.md
@@ -157,9 +217,9 @@ Engle–Granger 공적분 검정 p-value는 0.590111로, 수준 변수 사이에
    └─ reports/
 ```
 
-## 9. 재현 방법
+## 10. 재현 방법
 
-### 9.1 Python 환경 만들기
+### 10.1 Python 환경 만들기
 
 저장소 최상위 폴더에서 PowerShell을 열고 다음 명령을 순서대로 실행합니다.
 
@@ -171,11 +231,11 @@ python -m venv .venv
 
 가상환경을 활성화하지 않고 전용 Python 실행파일을 직접 사용하므로 PowerShell 실행 정책의 영향을 덜 받습니다.
 
-### 9.2 데이터 준비
+### 10.2 데이터 준비
 
 `data/raw/interest_rate.csv`를 유지합니다. KOSPI, S&P 500, 원/달러 환율, WTI는 첫 번째 노트북이 Yahoo Finance에서 수집하므로 인터넷 연결이 필요합니다. 세부 안내는 [`data/raw/README.md`](data/raw/README.md)에서 확인합니다.
 
-### 9.3 노트북 실행
+### 10.3 노트북 실행
 
 ```powershell
 .\.venv\Scripts\python.exe -m jupyter lab
@@ -185,7 +245,7 @@ JupyterLab에서 `01_data_collection_cleaning.ipynb` → `02_stationarity_diagno
 
 재현 기준 환경은 Python 3.13.3, `requirements.txt`의 고정 패키지 버전과 프로젝트 상대경로입니다.
 
-## 10. 한계와 개선 방향
+## 11. 한계와 개선 방향
 
 - 월별 동시점 선형관계만 분석했으며 시차효과는 모형화하지 않았습니다.
 - 정책·수급·투자심리·변동성 등 중요한 설명변수가 누락될 수 있습니다.
@@ -197,6 +257,6 @@ JupyterLab에서 `01_data_collection_cleaning.ipynb` → `02_stationarity_diagno
 
 자세한 검증 결과와 교정 전후 해석은 [`docs/findings.md`](docs/findings.md)에서 확인할 수 있습니다.
 
-## 11. 결론
+## 12. 결론
 
 수준 OLS의 높은 R²를 성과로 받아들이지 않고 정상성·공적분·잔차 구조를 먼저 확인해 허위회귀 위험을 진단했습니다. 1차 차분과 HAC 강건 표준오차로 단기 연관성의 해석을 교정했으며, 24개월 홀드아웃 결과는 표본 제약이 있는 보조 지표로 제한했습니다. 이 프로젝트는 높은 적합도보다 검증 절차와 해석의 신뢰성을 우선한 과정입니다.

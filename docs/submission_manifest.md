@@ -20,7 +20,7 @@
 | `data/raw/README.md`         | 포함    | 금리 데이터 배치 및 형식 안내          |
 | `data/raw/interest_rate.csv` | 포함    | 한국은행 ECOS 국고채 3년 월별 금리 데이터 |
 
-Yahoo Finance 기반 시장 데이터는 노트북 실행 시 자동으로 수집됩니다.
+Yahoo Finance 기반 시장 데이터는 노트북 실행 시 자동으로 수집된다.
 
 ### 기준 데이터
 
@@ -28,7 +28,7 @@ Yahoo Finance 기반 시장 데이터는 노트북 실행 시 자동으로 수�
 | ----------------------------------------------- | ----- | --------------------- |
 | `data/reference/kospi_macro_monthly_legacy.csv` | 포함    | 프로젝트 재구축 이전 데이터 비교 기준 |
 
-기준 데이터는 데이터 변경 이력을 검증하기 위한 감사 자료이며 회귀모형 입력으로 직접 사용하지 않습니다.
+기준 데이터는 데이터 변경 이력을 검증하기 위한 감사 자료이며 회귀모형 입력으로 직접 사용하지 않는다.
 
 ### 처리 데이터
 
@@ -47,7 +47,7 @@ Yahoo Finance 기반 시장 데이터는 노트북 실행 시 자동으로 수�
 |  2 | `notebooks/02_stationarity_diagnostics.ipynb` | 포함    | ADF·KPSS 정상성 검정, ACF 분석, 차분 데이터 생성                   |
 |  3 | `notebooks/03_modeling_evaluation.ipynb`      | 포함    | 수준·차분 OLS, 공적분·잔차·VIF 진단, HAC 추론, 홀드아웃 평가 및 이상 시점 탐지 |
 
-노트북은 다음 순서로 실행해야 합니다.
+노트북은 다음 순서로 실행해야 한다.
 
 ```text
 1. 01_data_collection_cleaning.ipynb
@@ -69,7 +69,7 @@ Yahoo Finance 기반 시장 데이터는 노트북 실행 시 자동으로 수�
 | `outputs/metrics/stationarity_decision_summary.csv`        | 포함    |
 | `outputs/reports/stationarity_findings.md`                 | 포함    |
 
-재구축 전후 데이터 비교 결과는 다음과 같습니다.
+재구축 전후 데이터 비교 결과는 다음과 같다.
 
 * 원/달러 환율 변경값: 42개
 * WTI 변경값: 26개
@@ -133,7 +133,7 @@ Yahoo Finance 기반 시장 데이터는 노트북 실행 시 자동으로 수�
 | `outputs/figures/holdout_kospi_level_model_comparison.png`      | 포함    |
 | `outputs/figures/residual_zscore_anomaly_timeline.png`          | 포함    |
 
-정상성 진단용 수준·차분 시계열 및 ACF 그래프도 `outputs/figures/`에 포함합니다.
+정상성 진단용 수준·차분 시계열 및 ACF 그래프도 `outputs/figures/`에 포함한다.
 
 ---
 
@@ -148,7 +148,7 @@ Yahoo Finance 기반 시장 데이터는 노트북 실행 시 자동으로 수�
 
 ## 10. Git 추적 제외 항목
 
-다음 항목은 저장소에 포함하지 않습니다.
+다음 항목은 저장소에 포함하지 않는다.
 
 | 항목                    | 제외 사유              |
 | --------------------- | ------------------ |
